@@ -4,6 +4,7 @@ import TemperatureConverter from "./components/tasks/temperatureConverter/temper
 import FlightBooker from "./components/tasks/flightBooker/flightBooker";
 import Timer from "./components/tasks/timer/timer";
 import CRUD from "./components/tasks/crud/crud";
+import CircleDrawer from "./components/tasks/circleDrawer/circleDrawer";
 
 function App() {
   useEffect(() => {
@@ -16,6 +17,7 @@ function App() {
       <FlightBooker />
       <Timer />
       <CRUD />
+      <CircleDrawer />
     </div>
   );
 }

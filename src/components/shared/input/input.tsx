@@ -2,6 +2,7 @@ interface InputProps {
   type: string;
   value: string | number;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+  onMouseUp?: (e: React.MouseEvent<HTMLInputElement, MouseEvent>) => void;
   placeholder?: string;
   label?: string;
   id?: string;
@@ -15,6 +16,7 @@ const Input = ({
   value,
   type,
   onChange,
+  onMouseUp,
   placeholder,
   label,
   id,
@@ -31,6 +33,7 @@ const Input = ({
         value={value}
         type={type}
         onChange={onChange}
+        onMouseUp={onMouseUp}
         placeholder={placeholder}
         disabled={disabled}
         max={max}
