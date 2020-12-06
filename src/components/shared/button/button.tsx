@@ -1,5 +1,5 @@
 interface ButtonProps {
-  onClick: React.MouseEventHandler<HTMLButtonElement>;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
   text: string;
   type: "button" | "submit" | "reset";
   disabled?: boolean;

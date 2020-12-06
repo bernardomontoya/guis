@@ -5,6 +5,8 @@ interface InputProps {
   placeholder?: string;
   label?: string;
   id?: string;
+  disabled?: boolean;
+  error?: boolean;
 }
 
 const Input = ({
@@ -14,6 +16,8 @@ const Input = ({
   placeholder,
   label,
   id,
+  disabled,
+  error,
 }: InputProps) => {
   return (
     <div>
@@ -24,7 +28,9 @@ const Input = ({
         type={type}
         onChange={onChange}
         placeholder={placeholder}
+        disabled={disabled}
       />
+      {error ? <span>Error!</span> : null}
     </div>
   );
 };
