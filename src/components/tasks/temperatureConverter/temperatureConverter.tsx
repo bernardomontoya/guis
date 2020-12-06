@@ -32,6 +32,7 @@ const TemperatureConverter = () => {
   return (
     <div>
       <Input
+        id="celsius-temperature"
         label="Celsius"
         type="number"
         value={celsius}
@@ -40,6 +41,7 @@ const TemperatureConverter = () => {
         }}
       />
       <Input
+        id="fahrenheit-temperature"
         label="Fahrenheit"
         type="number"
         value={fahrenheit}

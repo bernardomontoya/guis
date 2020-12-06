@@ -4,13 +4,22 @@ interface InputProps {
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   placeholder?: string;
   label?: string;
+  id?: string;
 }
 
-const Input = ({ value, type, onChange, placeholder, label }: InputProps) => {
+const Input = ({
+  value,
+  type,
+  onChange,
+  placeholder,
+  label,
+  id,
+}: InputProps) => {
   return (
     <div>
-      {label ? <label>{label}</label> : null}
+      {label ? <label htmlFor={id}>{label}</label> : null}
       <input
+        id={id}
         value={value}
         type={type}
         onChange={onChange}
