@@ -7,6 +7,8 @@ interface InputProps {
   id?: string;
   disabled?: boolean;
   error?: boolean;
+  min?: number;
+  max?: number;
 }
 
 const Input = ({
@@ -18,6 +20,8 @@ const Input = ({
   id,
   disabled,
   error,
+  max,
+  min,
 }: InputProps) => {
   return (
     <div>
@@ -29,6 +33,8 @@ const Input = ({
         onChange={onChange}
         placeholder={placeholder}
         disabled={disabled}
+        max={max}
+        min={min}
       />
       {error ? <span>Error!</span> : null}
     </div>
