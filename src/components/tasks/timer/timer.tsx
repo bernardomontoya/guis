@@ -9,8 +9,8 @@ const Timer = () => {
 
   const initialDuration = 20;
 
-  const [time, setTime] = useState(0);
-  const [duration, setDuration] = useState(initialDuration);
+  const [time, setTime] = useState<number>(0);
+  const [duration, setDuration] = useState<number>(initialDuration);
 
   useEffect(() => {
     const setTick = () => {

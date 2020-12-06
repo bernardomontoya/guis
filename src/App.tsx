@@ -3,6 +3,7 @@ import Counter from "./components/tasks/counter/counter";
 import TemperatureConverter from "./components/tasks/temperatureConverter/temperatureConverter";
 import FlightBooker from "./components/tasks/flightBooker/flightBooker";
 import Timer from "./components/tasks/timer/timer";
+import CRUD from "./components/tasks/crud/crud";
 
 function App() {
   useEffect(() => {
@@ -14,6 +15,7 @@ function App() {
       <TemperatureConverter />
       <FlightBooker />
       <Timer />
+      <CRUD />
     </div>
   );
 }
