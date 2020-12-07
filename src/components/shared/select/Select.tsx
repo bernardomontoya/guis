@@ -1,3 +1,5 @@
+import { Select as SelectStyled } from "./styles";
+
 type Option = {
   value: string;
   text: string;
@@ -12,13 +14,13 @@ interface SelectProps {
 
 const Select = ({ value, options, name, onChange }: SelectProps) => {
   return (
-    <select name={name} value={value} onChange={onChange}>
+    <SelectStyled name={name} value={value} onChange={onChange}>
       {options.map((option) => (
         <option key={option.value} value={option.value}>
           {option.text}
         </option>
       ))}
-    </select>
+    </SelectStyled>
   );
 };
 

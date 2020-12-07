@@ -2,6 +2,8 @@ import { useState, useEffect } from "react";
 import Select from "../../shared/select/Select";
 import Input from "../../shared/input/input";
 import Button from "../../shared/button/button";
+import { Title, Subtitle } from "../../shared/text/styles";
+import { Container, Wrapper } from "../../shared/container/styles";
 import {
   getCurrentDate,
   formatDate,
@@ -73,36 +75,49 @@ const FlightBooker = () => {
   });
 
   return (
-    <div>
+    <Container>
+      <Title>Fight booker</Title>
+      <Subtitle>
+        Choose either a one way flight or a flight with return date and book
+        your flight!
+      </Subtitle>
       <form onSubmit={handleSubmit}>
-        <Select
-          value={flight}
-          name="flight-select"
-          options={FlightOptions}
-          onChange={handleChange}
-        />
-        <Input
-          value={flightDates.startDate.date}
-          type="text"
-          onChange={(e) => handleDateChange(e, "startDate")}
-          placeholder={currentDate}
-          label="Start date"
-          id="start-date"
-          error={flightDates.startDate.error}
-        />
-        <Input
-          value={flightDates.returnDate.date}
-          type="text"
-          onChange={(e) => handleDateChange(e, "returnDate")}
-          placeholder={currentDate}
-          label="Return date"
-          id="return-date"
-          disabled={oneWayFlight}
-          error={flightDates.returnDate.error}
-        />
-        <Button text="Book" type="submit" disabled={submitDisabled} />
+        <Wrapper direction="column" top="medium">
+          <Wrapper direction="column" bottom="small">
+            <Select
+              value={flight}
+              name="flight-select"
+              options={FlightOptions}
+              onChange={handleChange}
+            />
+          </Wrapper>
+          <Wrapper direction="column" bottom="small">
+            <Input
+              value={flightDates.startDate.date}
+              type="text"
+              onChange={(e) => handleDateChange(e, "startDate")}
+              placeholder={currentDate}
+              label="Start date"
+              id="start-date"
+              error={flightDates.startDate.error}
+            />
+          </Wrapper>
+          <Wrapper direction="column" bottom="small">
+            <Input
+              value={flightDates.returnDate.date}
+              type="text"
+              onChange={(e) => handleDateChange(e, "returnDate")}
+              placeholder={currentDate}
+              label="Return date"
+              id="return-date"
+              disabled={oneWayFlight}
+              error={flightDates.returnDate.error}
+            />
+          </Wrapper>
+          <Button text="Book" type="submit" disabled={submitDisabled} />
+        </Wrapper>
       </form>
-    </div>
+    </Container>
   );
 };
 

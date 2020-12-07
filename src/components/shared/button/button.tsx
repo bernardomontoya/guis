@@ -1,15 +1,23 @@
+import { Button as StyledButton } from "./styles";
+
 interface ButtonProps {
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
   text: string;
   type: "button" | "submit" | "reset";
   disabled?: boolean;
+  right?: string;
 }
 
-const Button = ({ onClick, text, type, disabled }: ButtonProps) => {
+const Button = ({ onClick, text, type, disabled, right }: ButtonProps) => {
   return (
-    <button onClick={onClick} type={type} disabled={disabled}>
+    <StyledButton
+      onClick={onClick}
+      type={type}
+      disabled={disabled}
+      right={right}
+    >
       {text}
-    </button>
+    </StyledButton>
   );
 };
 

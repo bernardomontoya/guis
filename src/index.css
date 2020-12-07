@@ -1,0 +1,23 @@
+@import-normalize;
+
+body,
+html {
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  background: #efefef;
+  font-family: "Roboto", sans-serif;
+}
+
+body {
+  max-width: 1170px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 80px 20px;
+}

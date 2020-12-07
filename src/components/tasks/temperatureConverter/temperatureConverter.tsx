@@ -1,5 +1,7 @@
 import { useState, useEffect } from "react";
 import Input from "../../shared/input/input";
+import { Title, Subtitle, Value } from "../../shared/text/styles";
+import { Container, Wrapper } from "../../shared/container/styles";
 
 const TemperatureConverter = () => {
   useEffect(() => {
@@ -30,26 +32,34 @@ const TemperatureConverter = () => {
   };
 
   return (
-    <div>
-      <Input
-        id="celsius-temperature"
-        label="Celsius"
-        type="number"
-        value={celsius}
-        onChange={(e) => {
-          convertTemperature(e, "fahrenheit");
-        }}
-      />
-      <Input
-        id="fahrenheit-temperature"
-        label="Fahrenheit"
-        type="number"
-        value={fahrenheit}
-        onChange={(e) => {
-          convertTemperature(e, "celsius");
-        }}
-      />
-    </div>
+    <Container>
+      <Title>Temperature converter</Title>
+      <Subtitle>
+        Type a celsius or a fahrenheit temperature and check the conversion in
+        the opposite field
+      </Subtitle>
+      <Wrapper direction="row" top="medium">
+        <Input
+          id="celsius-temperature"
+          label="Celsius"
+          type="number"
+          value={celsius}
+          onChange={(e) => {
+            convertTemperature(e, "fahrenheit");
+          }}
+        />
+        <Value single>=</Value>
+        <Input
+          id="fahrenheit-temperature"
+          label="Fahrenheit"
+          type="number"
+          value={fahrenheit}
+          onChange={(e) => {
+            convertTemperature(e, "celsius");
+          }}
+        />
+      </Wrapper>
+    </Container>
   );
 };
 

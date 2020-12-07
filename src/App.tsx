@@ -5,6 +5,7 @@ import FlightBooker from "./components/tasks/flightBooker/flightBooker";
 import Timer from "./components/tasks/timer/timer";
 import CRUD from "./components/tasks/crud/crud";
 import CircleDrawer from "./components/tasks/circleDrawer/circleDrawer";
+import Cells from "./components/tasks/cells/cells";
 
 function App() {
   useEffect(() => {
@@ -18,6 +19,7 @@ function App() {
       <Timer />
       <CRUD />
       <CircleDrawer />
+      <Cells />
     </div>
   );
 }

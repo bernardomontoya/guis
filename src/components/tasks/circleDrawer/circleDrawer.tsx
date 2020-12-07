@@ -3,6 +3,8 @@ import { v4 as uuidv4 } from "uuid";
 import styled from "styled-components";
 import Button from "../../shared/button/button";
 import Input from "../../shared/input/input";
+import { Title, Subtitle, Value } from "../../shared/text/styles";
+import { Container, Wrapper } from "../../shared/container/styles";
 
 type CircleProps = {
   id: string;
@@ -38,7 +40,10 @@ const Canvas = styled.div`
   height: ${canvasConfig.height}px;
   position: relative;
   overflow: hidden;
-  border: 1px solid;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  width: 100%;
+  margin-top: 2.4rem;
 `;
 
 const Circle = styled.div<CircleProps>`
@@ -61,6 +66,26 @@ const FloatingMenu = styled.div<FloatingMenuProps>`
   position: absolute;
   top: ${({ y }) => y}px;
   left: ${({ x }) => x}px;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  div {
+    font-size: 0.9rem;
+  }
+  span {
+    padding: 0.6rem;
+    background: #efefef;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 0.9rem;
+    cursor: pointer;
+    -webkit-transition: 0.2s color ease;
+    transition: 0.2s color ease;
+    width: 100%;
+    &:hover {
+      background: #dcdcdc;
+    }
+  }
 `;
 
 const CircleDrawer = () => {
@@ -248,25 +273,12 @@ const CircleDrawer = () => {
   };
 
   return (
-    <div>
-      <div>
-        <Button
-          text="Undo"
-          type="button"
-          disabled={history.past.length <= 0}
-          onClick={() => {
-            handleUndo();
-          }}
-        />
-        <Button
-          text="Redo"
-          type="button"
-          disabled={history.future.length <= 0}
-          onClick={() => {
-            handleRedo();
-          }}
-        />
-      </div>
+    <Container>
+      <Title>Circle drawer</Title>
+      <Subtitle>
+        click on the white board to create a circle, click on the circle to
+        adjust his diameter
+      </Subtitle>
       <Canvas onClick={handleCanvasClick}>
         {history.present.map((circle) => (
           <CircleDraw
@@ -315,7 +327,26 @@ const CircleDrawer = () => {
           </FloatingMenu>
         ) : null}
       </Canvas>
-    </div>
+      <Wrapper top="medium">
+        <Button
+          text="Undo"
+          type="button"
+          disabled={history.past.length <= 0}
+          onClick={() => {
+            handleUndo();
+          }}
+          right="small"
+        />
+        <Button
+          text="Redo"
+          type="button"
+          disabled={history.future.length <= 0}
+          onClick={() => {
+            handleRedo();
+          }}
+        />
+      </Wrapper>
+    </Container>
   );
 };
 

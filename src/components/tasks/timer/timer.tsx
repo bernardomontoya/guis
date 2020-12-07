@@ -1,6 +1,8 @@
 import { useState, useEffect } from "react";
 import Meter from "../../shared/meter/meter";
 import Input from "../../shared/input/input";
+import { Title, Subtitle, Value } from "../../shared/text/styles";
+import { Container, Wrapper } from "../../shared/container/styles";
 
 const Timer = () => {
   useEffect(() => {
@@ -25,26 +27,33 @@ const Timer = () => {
   }, [time, duration]);
 
   return (
-    <div>
-      <Meter
-        label="Elapsed time"
-        id="elapsed-time-meter"
-        min={0}
-        max={duration}
-        value={time >= duration ? duration : time}
-      />
-      <span>{time >= duration ? duration : time.toFixed(2)}s</span>
-      <Input
-        value={duration}
-        max={initialDuration * 2}
-        min={0}
-        type="range"
-        onChange={(e) => {
-          const value = Number(e.target.value);
-          setDuration(value);
-        }}
-      />
-    </div>
+    <Container>
+      <Title>Timer</Title>
+      <Subtitle>
+        Move the slider to either add or remove time to the total duration of
+        the timer
+      </Subtitle>
+      <Wrapper direction="column" top="medium">
+        <Meter
+          label="Elapsed time"
+          id="elapsed-time-meter"
+          min={0}
+          max={duration}
+          value={time >= duration ? duration : time}
+        />
+        <Value>{time >= duration ? duration : time.toFixed(2)}s</Value>
+        <Input
+          value={duration}
+          max={initialDuration * 2}
+          min={0}
+          type="range"
+          onChange={(e) => {
+            const value = Number(e.target.value);
+            setDuration(value);
+          }}
+        />
+      </Wrapper>
+    </Container>
   );
 };
 

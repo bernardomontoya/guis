@@ -2,6 +2,9 @@ import { useState, useEffect } from "react";
 import { v4 as uuidv4 } from "uuid";
 import Input from "../../shared/input/input";
 import Button from "../../shared/button/button";
+import { Title, Subtitle } from "../../shared/text/styles";
+import { Container, Wrapper } from "../../shared/container/styles";
+import { List } from "./styles";
 
 type user = {
   id?: string;
@@ -109,83 +112,95 @@ const CRUD = () => {
   };
 
   return (
-    <form>
-      <div>
-        <Input
-          label="Filter prefix"
-          placeholder="Hans"
-          type="search"
-          value={search}
-          onChange={(e) => {
-            setSearch(e.target.value);
-          }}
-        />
-      </div>
-      <div>
-        <div>
-          {listToDisplay.map((user) => (
-            <span
-              onClick={() => {
-                const alreadySelected = activeUser.id === user.id;
-                setActiveUser({
-                  id: alreadySelected ? "" : user.id,
-                  name: alreadySelected ? "" : user.name,
-                  surname: alreadySelected ? "" : user.surname,
-                  type: alreadySelected ? "" : "edit",
-                });
-              }}
-              key={user.id}
-            >{`${user.surname}, ${user.name}`}</span>
-          ))}
-        </div>
-        <div>
-          <Input
-            label="Name"
-            placeholder="John"
-            type="text"
-            value={activeUser.name}
-            onChange={(e) => {
-              handleInputChange(e, "name");
+    <Container>
+      <Title>CRUD</Title>
+      <Subtitle>Add, edit or remove users from the list</Subtitle>
+      <form>
+        <Wrapper direction="row" bottom="small" align="start">
+          <Wrapper direction="column" align="start" right="small">
+            <Wrapper direction="column" bottom="small">
+              <Input
+                label="Filter prefix"
+                placeholder="Hans"
+                type="search"
+                value={search}
+                onChange={(e) => {
+                  setSearch(e.target.value);
+                }}
+              />
+            </Wrapper>
+            <List>
+              {listToDisplay.map((user) => (
+                <span
+                  onClick={() => {
+                    const alreadySelected = activeUser.id === user.id;
+                    setActiveUser({
+                      id: alreadySelected ? "" : user.id,
+                      name: alreadySelected ? "" : user.name,
+                      surname: alreadySelected ? "" : user.surname,
+                      type: alreadySelected ? "" : "edit",
+                    });
+                  }}
+                  key={user.id}
+                >{`${user.surname}, ${user.name}`}</span>
+              ))}
+            </List>
+          </Wrapper>
+          <div>
+            <Wrapper direction="column" bottom="small">
+              <Input
+                label="Name"
+                placeholder="John"
+                type="text"
+                value={activeUser.name}
+                onChange={(e) => {
+                  handleInputChange(e, "name");
+                }}
+              />
+            </Wrapper>
+            <Wrapper direction="column" bottom="small">
+              <Input
+                label="Surname"
+                placeholder="Smith"
+                type="text"
+                value={activeUser.surname}
+                onChange={(e) => {
+                  handleInputChange(e, "surname");
+                }}
+              />
+            </Wrapper>
+          </div>
+        </Wrapper>
+        <Wrapper>
+          <Button
+            text="Create"
+            type="button"
+            disabled={editing || !creating}
+            onClick={() => {
+              handleFormAction("save");
+            }}
+            right="small"
+          />
+          <Button
+            text="Update"
+            type="button"
+            disabled={!editing}
+            onClick={() => {
+              handleFormAction("edit");
+            }}
+            right="small"
+          />
+          <Button
+            text="Delete"
+            type="button"
+            disabled={!editing}
+            onClick={() => {
+              handleFormAction("delete");
             }}
           />
-          <Input
-            label="Surname"
-            placeholder="Smith"
-            type="text"
-            value={activeUser.surname}
-            onChange={(e) => {
-              handleInputChange(e, "surname");
-            }}
-          />
-        </div>
-      </div>
-      <div>
-        <Button
-          text="Create"
-          type="button"
-          disabled={editing || !creating}
-          onClick={() => {
-            handleFormAction("save");
-          }}
-        />
-        <Button
-          text="Update"
-          type="button"
-          disabled={!editing}
-          onClick={() => {
-            handleFormAction("edit");
-          }}
-        />
-        <Button
-          text="Delete"
-          type="button"
-          disabled={!editing}
-          onClick={() => {
-            handleFormAction("delete");
-          }}
-        />
-      </div>
-    </form>
+        </Wrapper>
+      </form>
+    </Container>
   );
 };
 

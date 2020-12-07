@@ -1,3 +1,5 @@
+import { Wrapper } from "../../shared/container/styles";
+import { Meter as MeterStyled } from "./styles";
 interface MeterProps {
   label?: string;
   id?: string;
@@ -8,10 +10,10 @@ interface MeterProps {
 
 const Meter = ({ label, id, min, max, value }: MeterProps) => {
   return (
-    <div>
+    <Wrapper direction="column">
       {label ? <label htmlFor={id}>{label}</label> : null}
-      <meter id={id} min={min} max={max} value={value} />
-    </div>
+      <MeterStyled id={id} min={min} max={max} value={value} />
+    </Wrapper>
   );
 };
 

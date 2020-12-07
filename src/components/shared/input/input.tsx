@@ -1,3 +1,6 @@
+import { Input as InputStyled, Label } from "./styles";
+import { Wrapper } from "../../shared/container/styles";
+
 interface InputProps {
   type: string;
   value: string | number;
@@ -26,9 +29,9 @@ const Input = ({
   min,
 }: InputProps) => {
   return (
-    <div>
-      {label ? <label htmlFor={id}>{label}</label> : null}
-      <input
+    <Wrapper direction="column" align="start">
+      {label ? <Label htmlFor={id}>{label}</Label> : null}
+      <InputStyled
         id={id}
         value={value}
         type={type}
@@ -40,7 +43,7 @@ const Input = ({
         min={min}
       />
       {error ? <span>Error!</span> : null}
-    </div>
+    </Wrapper>
   );
 };
 
